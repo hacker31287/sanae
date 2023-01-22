@@ -62,7 +62,7 @@ function request($dork, $page , $output)
         $context  = stream_context_create($options);
         $response = file_get_contents(librex() . urlencode($dork) . '&p=' . $i . '&type=0', false, $context);
         $json = json_decode($response, true);
-        $file = fopen($output, "w");
+        $file = fopen($output, "a");
         foreach ($json as $data) {
             echo $data['url'] . PHP_EOL;
             fwrite($file, $data['url'] . PHP_EOL);
